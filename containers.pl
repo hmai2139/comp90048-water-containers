@@ -100,7 +100,6 @@ containers(Moves, MoveA, History, HistoryA, CurrentState) :-
 containers(Moves, History) :-
     containers(Moves, [], History, [state(0,0)], state(0,0)).
 
-
 % Same as the predicates above, except these do not show state history.
 containers(MovesRev, Moves, _, state(_, 4)) :-
     reverse(Moves, MovesRev).
