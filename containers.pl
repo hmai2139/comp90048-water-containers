@@ -14,6 +14,9 @@
 capacity(3, small).
 capacity(5, big).
 
+% Desired states of a given container.
+desired(4, big).
+
 % Valid states.
 state(Small, Big) :-
     between(0, 3, Small),
@@ -83,7 +86,8 @@ effect(state(S0, B0), pour(From, To), state(S1, B1)) :-
 % Goal reaches when there are four litres of water in the big container.
 % Reverse the lists of moves and history to obtain the correct order,
 % as new entries are added at the front of each list (to avoid using `append`).
-containers(MovesRev, Moves, HistoryRev, History, state(_, 4)) :-
+containers(MovesRev, Moves, HistoryRev, History, state(_, Desired)) :-
+    desired(Desired, big),
     reverse(Moves, MovesRev),
     reverse(History, HistoryRev).
 
